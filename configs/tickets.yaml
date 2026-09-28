@@ -1,0 +1,25 @@
+dataset: data/tickets.jsonl
+concurrency: 5
+
+runs:
+  - name: haiku-v1
+    model: anthropic:claude-haiku-4-5
+    prompt: prompts/tickets/v1_simple.md
+  - name: haiku-v2
+    model: anthropic:claude-haiku-4-5
+    prompt: prompts/tickets/v2_few_shot.md
+  - name: sonnet-v2
+    model: anthropic:claude-sonnet-5
+    prompt: prompts/tickets/v2_few_shot.md
+
+  - name: luna-v2
+    model: openai:gpt-5.6-luna
+    prompt: prompts/tickets/v2_few_shot.md
+  - name: terra-v2
+    model: openai:gpt-5.6-terra
+    prompt: prompts/tickets/v2_few_shot.md
+
+  # jev has no prompt, questions are built in task.py
+  # TODO: pin version
+  - name: jev
+    model: typesafe:jev-latest

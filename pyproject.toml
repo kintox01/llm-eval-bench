@@ -1,0 +1,37 @@
+[project]
+name = "evalbench"
+version = "0.1.0"
+description = "Benchmark LLMs and Jev (TypeSafe AI) on typed classification tasks: accuracy, calibration, cost, latency."
+readme = "README.md"
+authors = [
+    { name = "dguerin", email = "90927130+kintox01@users.noreply.github.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=3.0.6",
+    "plotly>=7.1.0",
+    "pydantic-ai-slim[anthropic,openai]>=2.51.0",
+    "python-dotenv>=1.2.3",
+    "pyyaml>=6.0.3",
+    "rich>=15.0.0",
+    "streamlit>=1.64.0",
+    "typer>=0.27.2",
+    "typesafe-sdk>=0.7.2",
+]
+
+[project.scripts]
+evalbench = "evalbench.cli:app"
+
+[build-system]
+requires = ["uv_build>=0.12.12,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
